@@ -19,3 +19,5 @@ class Config(object):
 
     POSTS_PER_PAGE = 3
     LANGUAGES = ['en', 'es', 'zh']
+    BD_TRANSLATOR_KEY = os.environ.get('BD_TRANSLATOR_KEY')
+    BD_TRANSLATOR_APPID = os.environ.get('BD_TRANSLATOR_APPID')
