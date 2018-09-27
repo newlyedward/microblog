@@ -1,21 +1,21 @@
 import json
 import requests
 from flask_babel import _
-from app import app
+from flask import current_app
 import random
 from hashlib import md5
 
 
 def translate(text, source_language, dest_language):
-    if 'BD_TRANSLATOR_KEY' not in app.config or \
-            not app.config['BD_TRANSLATOR_KEY']:
+    if 'BD_TRANSLATOR_KEY' not in current_app.config or \
+            not current_app.config['BD_TRANSLATOR_KEY']:
         return _('ERROR: the translation service is not configed.')
-    if 'BD_TRANSLATOR_APPID' not in app.config or \
-            not app.config['BD_TRANSLATOR_APPID']:
+    if 'BD_TRANSLATOR_APPID' not in current_app.config or \
+            not current_app.config['BD_TRANSLATOR_APPID']:
         return _('ERROR: the translation service is not configed.')
 
-    appid = app.config['BD_TRANSLATOR_APPID']
-    secretKey = app.config['BD_TRANSLATOR_KEY']
+    appid = current_app.config['BD_TRANSLATOR_APPID']
+    secretKey = current_app.config['BD_TRANSLATOR_KEY']
     salt = random.randint(32768, 65536)
 
     sign = appid + text + str(salt) + secretKey
