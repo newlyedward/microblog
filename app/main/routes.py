@@ -168,7 +168,7 @@ def messages():
                            next_url=next_url, prev_url=prev_url)
 
 
-@bp.route('/notification')
+@bp.route('/notifications')
 @login_required
 def notifications():
     since = request.args.get('since', 0.0, type=float)
